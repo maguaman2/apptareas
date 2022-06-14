@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TareaPage from "./tarea/TareaPage";
+import TareaCreate from "./tarea/TareaCreate";
+import { TareaProvider } from "./TareaContext";
+import Navbar from "./components/Navbar";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ <TareaProvider>
+    <BrowserRouter>
+    <Navbar />
+      <Routes>
+        <Route path="/tareas" element={<TareaPage />} />
+        <Route path="/tareacreate" element={<TareaCreate />} />
+                
+        
+      </Routes>
+    </BrowserRouter> 
+    </TareaProvider>
+
   );
 }
 
